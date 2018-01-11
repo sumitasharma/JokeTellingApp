@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.sumitasharma.joketellingandroidlibrary">
+
+    <application>
+        <activity
+            android:name=".JokeLibraryActivity"
+            android:label="@string/title_activity_joke_library"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+    </application>
+
+
+</manifest>
