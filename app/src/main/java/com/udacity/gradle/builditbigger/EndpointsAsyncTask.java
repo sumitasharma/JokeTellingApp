@@ -1,11 +1,15 @@
 package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.util.Pair;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.example.sumitasharma.joketellingandroidlibrary.JokeLibraryActivity;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
@@ -14,18 +18,18 @@ import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
 
-import static com.udacity.gradle.builditbigger.MainActivity.progressBar;
+import static com.udacity.gradle.builditbigger.MainActivityFragment.JOKES;
 
 class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Integer, String> {
     private static MyApi myApiService = null;
-    public TellJokes tellJokes;
-    private Context context;
+    ProgressBar progressBar;
+    TextView progressTextView;
+    private Context mContext;
 
-//         try {
-//        tellJokes = (MainActivity) context;
-//    } catch (ClassCastException e) {
-//        Log.i(" ","implement onStepClickedListener");
-//    }
+    public EndpointsAsyncTask(ProgressBar progressBar, TextView progressTextView) {
+        this.progressBar = progressBar;
+        this.progressTextView = progressTextView;
+    }
 
     @Override
     protected String doInBackground(Pair<Context, String>... params) {
@@ -48,9 +52,8 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Integer, Strin
             myApiService = builder.build();
         }
 
-        context = params[0].first;
+        mContext = params[0].first;
         String name = params[0].second;
-        tellJokes = (MainActivity) context;
 
         try {
             return myApiService.sayHi(name).execute().getData();
@@ -62,20 +65,19 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Integer, Strin
 
     @Override
     protected void onPostExecute(String result) {
-        tellJokes.getJoke(result);
-        Log.i("", "joke is : " + result);
-        //Toast.makeText(context, result, Toast.LENGTH_LONG).show();
         progressBar.setVisibility(View.GONE);
+        progressTextView.setVisibility(View.GONE);
+        Intent intent = new Intent(mContext, JokeLibraryActivity.class);
+        intent.putExtra(JOKES, result);
+        mContext.startActivity(intent);
+        Log.i("", "joke is : " + result);
+
     }
 
     @Override
     protected void onProgressUpdate(Integer... values) {
+        progressTextView.setText("Running..." + values[0]);
         progressBar.setProgress(values[0]);
-    }
-
-    public interface TellJokes {
-        public void getJoke(String joke);
-
     }
 
 }
