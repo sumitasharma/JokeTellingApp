@@ -18,5 +18,24 @@ allprojects {
         jcenter()
         google()
     }
+}
+task myJokeTellingTest {
+    dependsOn(['startAppEngine','runTellingJokes','stopAppEngine'])
+}
+
+task startAppEngine {
+    dependsOn ':backend:appengineRun'
+    evaluationDependsOn(":backend")
+    project(':backend').appengine.daemon = true
+}
+
+task runTellingJokes {
+    dependsOn ':app:connectedAndroidTest'
+    mustRunAfter "startAppEngine"
+}
+
+task stopAppEngine {
+    dependsOn ':backend:appengineStop'
+    mustRunAfter "runTellingJokes"
 
 }
