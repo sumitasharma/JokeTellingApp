@@ -16,8 +16,7 @@ import android.widget.TextView;
 public class MainActivityFragment extends Fragment {
     public final static String JOKES = "jokes";
     String newJoke;
-    Button tellJokeButton;
-    Context mContext;
+    private Context mContext;
     private ProgressBar progressBar;
     private TextView progressTextView;
     public MainActivityFragment() {
@@ -30,7 +29,7 @@ public class MainActivityFragment extends Fragment {
         AdsDisplay.displayAds(root, mContext);
         progressBar = root.findViewById(R.id.joke_telling_progress_bar);
         progressTextView = root.findViewById(R.id.joke_telling_progress_text);
-        tellJokeButton = root.findViewById(R.id.tell_joke_button);
+        Button tellJokeButton = root.findViewById(R.id.tell_joke_button);
         tellJokeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,12 +41,12 @@ public class MainActivityFragment extends Fragment {
         return root;
     }
 
-    public void tellJoke(View view) {
+    private void tellJoke(View view) {
 
         progressBar.setVisibility(View.VISIBLE);
         progressTextView.setVisibility(View.VISIBLE);
 
-        new EndpointsAsyncTask(progressBar, progressTextView).execute(new Pair<Context, String>(mContext, "Manfred"));
+        new EndpointsAsyncTask(progressBar, progressTextView).execute(new Pair<>(mContext, "Manfred"));
     }
 
 

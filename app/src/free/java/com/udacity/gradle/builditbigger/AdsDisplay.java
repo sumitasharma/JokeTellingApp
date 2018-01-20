@@ -12,7 +12,7 @@ import com.google.android.gms.ads.AdView;
 public class AdsDisplay {
     public static void displayAds(View view, Context context) {
         Log.i("AdDisplay", "Before Ads in AdDisplay");
-        AdView mAdView = (AdView) view.findViewById(R.id.adView);
+        AdView mAdView = view.findViewById(R.id.adView);
         // Create an ad request. Check logcat output for the hashed device ID to
         // get test ads on a physical device. e.g.
         // "Use AdRequest.Builder.addTestDevice("ABCDEF012345") to get test ads on this device."

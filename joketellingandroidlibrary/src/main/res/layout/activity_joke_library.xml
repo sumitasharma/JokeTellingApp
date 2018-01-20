@@ -25,10 +25,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:gravity="center"
+        android:textStyle="italic"
         android:layout_margin="50dp"
         android:singleLine="false"
-        android:text="Hello"
-        android:textSize="50dp" />
+        android:textSize="30dp" />
 
     <include layout="@layout/content_joke_library" />
 

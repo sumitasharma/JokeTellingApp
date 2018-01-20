@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class MyJokes {
     private static final ArrayList<String> jokesArrayList =
-            new ArrayList<String>(Arrays.asList("You know why you never see elephants hiding up in trees... Because they're really good at it.",
+            new ArrayList<>(Arrays.asList("You know why you never see elephants hiding up in trees... Because they're really good at it.",
                     "What's the difference between a guitar and a fish. You can't tuna fish.",
                     "What is red and smells like blue paint?. Red paint",
                     "What do you get from a pampered cow? Spoiled milk.",

@@ -8,13 +8,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import com.example.sumitasharma.joketellingandroidlibrary.JokeLibraryActivity;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
-import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
 
@@ -22,8 +22,8 @@ import static com.udacity.gradle.builditbigger.MainActivityFragment.JOKES;
 
 class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Integer, String> {
     private static MyApi myApiService = null;
-    ProgressBar progressBar;
-    TextView progressTextView;
+    private final ProgressBar progressBar;
+    private final TextView progressTextView;
     private Context mContext;
 
     public EndpointsAsyncTask(ProgressBar progressBar, TextView progressTextView) {
