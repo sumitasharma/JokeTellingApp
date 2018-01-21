@@ -12,13 +12,16 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class MainActivityFragment extends Fragment {
     public final static String JOKES = "jokes";
-    String newJoke;
     private Context mContext;
-    private ProgressBar progressBar;
-    private TextView progressTextView;
+    @BindView(R.id.joke_telling_progress_bar) ProgressBar progressBar;
+    @BindView(R.id.joke_telling_progress_text) TextView progressTextView;
+    @BindView(R.id.tell_joke_button) Button tellJokeButton;
     public MainActivityFragment() {
     }
 
@@ -27,9 +30,10 @@ public class MainActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
         AdsDisplay.displayAds(root, mContext);
-        progressBar = root.findViewById(R.id.joke_telling_progress_bar);
-        progressTextView = root.findViewById(R.id.joke_telling_progress_text);
-        Button tellJokeButton = root.findViewById(R.id.tell_joke_button);
+//        progressBar = root.findViewById(R.id.joke_telling_progress_bar);
+//        progressTextView = root.findViewById(R.id.joke_telling_progress_text);
+       // Button tellJokeButton = root.findViewById(R.id.tell_joke_button);
+        ButterKnife.bind(this, root);
         tellJokeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

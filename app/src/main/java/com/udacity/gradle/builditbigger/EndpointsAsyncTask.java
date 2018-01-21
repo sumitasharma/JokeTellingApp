@@ -10,7 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
-import com.example.sumitasharma.joketellingandroidlibrary.JokeLibraryActivity;
+import com.example.sumitasharma.joketellingandroidlibrary.activity.JokeLibraryActivity;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
