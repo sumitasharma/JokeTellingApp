@@ -30,9 +30,6 @@ public class MainActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
         AdsDisplay.displayAds(root, mContext);
-//        progressBar = root.findViewById(R.id.joke_telling_progress_bar);
-//        progressTextView = root.findViewById(R.id.joke_telling_progress_text);
-       // Button tellJokeButton = root.findViewById(R.id.tell_joke_button);
         ButterKnife.bind(this, root);
         tellJokeButton.setOnClickListener(new View.OnClickListener() {
             @Override
